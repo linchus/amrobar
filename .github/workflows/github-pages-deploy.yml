@@ -38,9 +38,11 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install deps
+        working-directory: ./frontend
         run: npm ci
 
       - name: Build
+        working-directory: ./frontend
         run: npm run build
 
       - name: Setup Pages
@@ -50,7 +52,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload dist repository
-          path: './dist'
+          path: './frontend/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
